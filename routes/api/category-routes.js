@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     res.json(data);
   } 
   catch{
-    res.status(404).send('Request unsuccessful')
+    res.status(404).json('Request unsuccessful')
   }
 });
 
@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
     res.json(data);
   } 
   catch{
-    res.status(404).send('Request unsuccessful')
+    res.status(404).json('Request unsuccessful')
   }
 });
 
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     res.json('Category successfully added')
   } 
   catch{
-    res.status(404).send('Addition unsuccessful')
+    res.status(404).json('Addition unsuccessful')
   }
 });
 
@@ -58,7 +58,7 @@ router.put('/:id', async (req, res) => {
     res.json('Category successfully updated')
   }
   catch{
-    res.status(404).send('Update unsuccessful')
+    res.status(404).json('Update unsuccessful')
   }
 });
 
@@ -73,7 +73,7 @@ router.delete('/:id', async (req, res) => {
     res.json('Category successfully deleted')
   }
   catch{
-    res.status(404).send('Deletion unsuccessful')
+    res.status(404).json('Deletion unsuccessful')
   }
 });
 
