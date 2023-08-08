@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       include: [{model: Product}]
     }
     )
-    res.json(data);
+    res.status(200).json(data);
   } 
   catch{
     res.status(404).json('Request unsuccessful')
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
       include: [{model: Product}]
     }
     )
-    res.json(data);
+    res.status(200).json(data);
   } 
   catch{
     res.status(404).json('Request unsuccessful')
@@ -39,8 +39,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new tag
   try{
-    await Tag.create({ tag_name: req.body.tag_name})
-    res.json('Tag successfully added')
+    const newTag = await Tag.create({ tag_name: req.body.tag_name})
+    res.status(200).json(newTag)
   } 
   catch{
     res.status(404).json('Addition unsuccessful')
@@ -51,7 +51,7 @@ router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   try{
     await Tag.create({ tag_name: req.body.tag_name})
-    res.json('Tag successfully updated')
+    res.status(200).json('Tag successfully updated')
   } 
   catch{
     res.status(404).json('Update unsuccessful')
@@ -66,7 +66,7 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id
       }
     })
-    res.json('Tag successfully deleted')
+    res.status(200).json('Tag successfully deleted')
   }
   catch{
     res.status(404).json('Deletion unsuccessful')

@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       include: [{model: Product}]
     }
     )
-    res.json(data);
+    res.status(200).json(data);
   } 
   catch{
     res.status(404).json('Request unsuccessful')
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
       include: [{model: Product}]
     }
     )
-    res.json(data);
+    res.status(200).json(data);
   } 
   catch{
     res.status(404).json('Request unsuccessful')
@@ -39,11 +39,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new category
   try{
-    await Category.create({ category_name: req.body.category_name})
-    res.json('Category successfully added')
+    const newCat = await Category.create({ category_name: req.body.category_name});
+    res.status(200).json(newCat);
   } 
   catch{
-    res.status(404).json('Addition unsuccessful')
+    res.status(404).json('Addition unsuccessful');
   }
 });
 
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
         id: req.params.id
       }
     })
-    res.json('Category successfully updated')
+    res.status(200).json('Category successfully updated');
   }
   catch{
     res.status(404).json('Update unsuccessful')
@@ -65,15 +65,15 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try{
-    await Category.destroy({
+      await Category.destroy({
       where: {
         id: req.params.id
       }
     })
-    res.json('Category successfully deleted')
+    res.status(200).json('Category successfully deleted');
   }
   catch{
-    res.status(404).json('Deletion unsuccessful')
+    res.status(404).json('Deletion unsuccessful');
   }
 });
 

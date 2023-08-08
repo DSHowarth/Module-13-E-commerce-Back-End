@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
       include: [{model: Category}, {model: Tag}]
     }
     )
-    res.json(data);
+    res.status(200).json(data);
   } 
   catch{
     res.status(404).json('Request unsuccessful')
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
       include: [{model: Category}, {model: Tag}]
     }
     )
-    res.json(data);
+    res.status(200).json(data);
   } 
   catch{
     res.status(404).json('Request unsuccessful')
@@ -123,7 +123,7 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id
       }
     })
-    res.json('Product successfully deleted')
+    res.status(200).json('Product successfully deleted')
   }
   catch{
     res.status(404).json('Deletion unsuccessful')
